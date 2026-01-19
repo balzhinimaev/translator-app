@@ -1,0 +1,151 @@
+/* Telegram Web App глобальные стили */
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.4;
+  font-weight: 400;
+  color-scheme: light dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  
+  /* Telegram цвета по умолчанию */
+  --tg-theme-bg-color: #ffffff;
+  --tg-theme-text-color: #000000;
+  --tg-theme-hint-color: #999999;
+  --tg-theme-link-color: #2481cc;
+  --tg-theme-button-color: #2481cc;
+  --tg-theme-button-text-color: #ffffff;
+  --tg-theme-secondary-bg-color: #f1f1f1;
+  --tg-theme-section-bg-color: #ffffff;
+  --tg-theme-section-header-text-color: #6d6d72;
+  --tg-theme-subtitle-text-color: #999999;
+  --tg-theme-destructive-text-color: #cc2929;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  overflow-x: hidden;
+  /* Отключаем увеличение при двойном тапе на iOS */
+  touch-action: manipulation;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  background-color: var(--tg-theme-bg-color);
+  color: var(--tg-theme-text-color);
+  font-family: inherit;
+  line-height: inherit;
+  overflow-x: hidden;
+  /* Убираем выделение текста на мобильных */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Но разрешаем выделение для текстовых полей */
+}
+
+/* Разрешаем выделение для элементов ввода */
+input, textarea, [contenteditable] {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* Убираем стандартные стили для элементов форм */
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+/* Убираем outline при фокусе для всех элементов кроме полей ввода */
+button:focus, 
+select:focus {
+  outline: none;
+}
+
+/* Оставляем outline для полей ввода для доступности */
+input:focus, 
+textarea:focus {
+  outline: 2px solid var(--tg-theme-button-color);
+  outline-offset: 2px;
+}
+
+/* Убираем стандартные стили кнопок */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Убираем стандартные стили ссылок */
+a {
+  color: var(--tg-theme-link-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Темная тема для систем с предпочтением темной темы */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --tg-theme-bg-color: #212d3b;
+    --tg-theme-section-bg-color: #1d2733;
+    --tg-theme-secondary-bg-color: #151e27;
+    --tg-theme-text-color: #ffffff;
+    --tg-theme-hint-color: #7d8b99;
+    --tg-theme-section-header-text-color: #7d8b99;
+    --tg-theme-subtitle-text-color: #7d8b99;
+  }
+}
+
+/* Специальные стили для iOS Safari */
+@supports (-webkit-touch-callout: none) {
+  body {
+    /* Убираем отскок при прокрутке */
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Стили для высоких экранов (избегаем проблем с viewport) */
+@media screen and (min-height: 800px) {
+  #root {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Адаптация для очень маленьких экранов */
+@media screen and (max-height: 500px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Убираем стандартные тени и анимации для лучшей производительности на слабых устройствах */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

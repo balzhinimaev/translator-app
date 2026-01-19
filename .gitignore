@@ -20,11 +20,11 @@ pnpm-debug.log*
 .env*
 
 # Source files and configs, as requested for this deployment workflow
-/public
-/src
-/tsconfig.json
-/tsconfig.node.json
-/tsconfig.app.json
-/vite.config.ts
-/eslint.config.js
+# /public
+# /src
+# /tsconfig.json
+# /tsconfig.node.json
+# /tsconfig.app.json
+# /vite.config.ts
+# /eslint.config.js
  README.md
